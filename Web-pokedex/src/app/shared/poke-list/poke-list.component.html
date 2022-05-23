@@ -1,0 +1,20 @@
+<!-- Search -->
+<poke-search [btnText]="btnText" (onSubmit)="createHandler($event)"></poke-search>
+
+<section class="listagem">
+    <ng-template ngFor let-pokemon [ngForOf]="readData">
+        <a class="pokemon">
+            <section class="pokemons__status">
+                <h2>
+                    {{ pokemon.name}}
+                </h2>
+            </section>
+            <section class="pokemon__image">
+                <img [src]="pokemon.url" [alt]="pokemon.name">
+            </section>
+        </a>
+    </ng-template>
+    <div *ngIf="readData == undefined || readData == 0" class="init">
+        <p > Você ainda não capturou nunhum Pokémon </p>
+    </div>
+</section>

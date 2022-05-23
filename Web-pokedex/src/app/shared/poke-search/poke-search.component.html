@@ -1,0 +1,9 @@
+<form (ngSubmit)="submit()" [formGroup]="pokemonForms" #formDir="ngForm"> 
+    <input type="text" placeholder="Escreva o nome de um Pokemon ..." formControlName="name">
+    <!-- <img src="assets/icons/search.svg" alt="Capture um pokemon"> -->
+    <button type="submit" value="{{btnText}}"> Capturar </button>
+ 
+</form>
+<div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+    <p *ngIf="name.errors?.['required']">O nome do Pokémon é obrigatório</p>
+</div>
