@@ -7,6 +7,7 @@ import { PokeSearchComponent } from './poke-search/poke-search.component';
 import { PokeListComponent } from './poke-list/poke-list.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PokeHeaderComponent,
     PokeSearchComponent,
-    PokeListComponent
+    PokeListComponent,
+    MessagesComponent
   ],
   exports:[
     PokeHeaderComponent,

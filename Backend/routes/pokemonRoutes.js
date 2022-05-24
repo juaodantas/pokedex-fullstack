@@ -36,19 +36,20 @@ router.get('/', async (req, res) => {
 //UPDATE - Update isCatch value
 router.patch('/:name', async (req, res) => {
 
-    // tratar erro corpo requisição
 
     const { name } = req.params
 
     try {
-        const updatedPokemon = await Pokemon.updateOne({ 'name': name }, req.body, { upsert: true })
-
+        const updatedPokemon = await Pokemon.updateOne({ 'name': name }, req.body)
+        
+        // Tratamento de erro
         if (updatedPokemon.matchedCount === 0 ) {
             res.status(422).json({ message: 'Pokemon não encontrado!' })
             return
         }
 
-        res.status(200).json({ success: "ok" })
+        res.status(200).json({ success: "Pokemon adicionado com sucesso" })
+        
     } catch (error) {
         console.log(error)
         res.status(500).json({ erro: error })

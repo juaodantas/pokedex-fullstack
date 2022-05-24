@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 //Observable
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -14,15 +14,18 @@ export class ApiService {
     private _http: HttpClient,
   ) { }
 
+  // GET my pokemons
   apiListAllPokemons():Observable<any>{
     var req = this._http.get(this.apiUrl);
     return req;
   }
   
+  //PUTH pokemon data
   updatePokemonData( name: string, isCatch: Object):Observable<any>{
-    var pokemon = Object.values(name);
-    var url = this.apiUrl + '/' + pokemon
-    console.log(url)
-    return this._http.patch( `${this.apiUrl}/${pokemon}`, isCatch );
+   
+    return this._http.patch( `${this.apiUrl}/${name}`, isCatch ).pipe(
+      catchError(val=> of(val))
+    );
+    
   }
 }

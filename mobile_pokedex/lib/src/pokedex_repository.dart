@@ -7,10 +7,31 @@ class PokedexRepository implements IPokedexRepository {
   
   @override
   Future<List<Pokemon>> getMyPokemons() async {
-    Response response;
+    Response result;
     var dio = Dio();
-    response = await dio.get('http://localhost:3000/pokemon');
-    print(response.data.toString());
-    throw UnimplementedError();
+    result = await dio.get('http://localhost:3000/pokemon');
+
+  if (result.statusCode == 200) {
+      var pokemons = result.data
+           ?.map((item) => Pokemon.fromMap(item))
+           .toList();
+      List<Pokemon> users = pokemons.cast<Pokemon>();
+      return users;
+    } else {
+      throw Exception(result.statusMessage);
+    }
+    
+  }
+  
+  @override
+  Future<String> updateIsCatch(String name, bool isCatch) async{
+    var dio = Dio();
+    Response response = await dio.patch('http://localhost:3000/pokemon/${name}', data: {'isCatch': isCatch} );
+     if (response.statusCode == 200) {
+      return 'sucesso';
+    } else {
+      throw Exception(response.statusMessage);
+    }
+
   }
 }

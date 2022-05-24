@@ -1,0 +1,25 @@
+<!-- Search -->
+<poke-search [btnText]="btnText" (onSubmit)="createHandler($event)"></poke-search>
+
+<!-- Error Messages -->
+<messages></messages>
+
+<!-- List My Pokemons -->
+<section class="listagem">
+    <ng-template ngFor let-pokemon [ngForOf]="readData">       
+        <a class="pokemon">
+            <section class="pokemons__status">
+                <button type="submit" (click)="deletePokemon(pokemon.name)">
+                    Retirar da pokedex
+                </button> 
+                <h1>ID: {{pokemon.id}}</h1>
+                <h2>
+                    Nome: {{ pokemon.name}}
+                </h2>
+            </section>
+            <section class="pokemon__image">
+                <img [src]="pokemon.url" [alt]="pokemon.name">
+            </section>          
+        </a>       
+    </ng-template>   
+</section>
