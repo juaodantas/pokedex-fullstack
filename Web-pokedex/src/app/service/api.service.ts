@@ -23,6 +23,6 @@ export class ApiService {
     var pokemon = Object.values(name);
     var url = this.apiUrl + '/' + pokemon
     console.log(url)
-     return this._http.patch( `${this.apiUrl}/${pokemon}`, isCatch );
+    return this._http.patch( `${this.apiUrl}/${pokemon}`, isCatch );
   }
 }
