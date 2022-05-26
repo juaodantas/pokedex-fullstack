@@ -9,6 +9,7 @@ class PokedexRepository implements IPokedexRepository {
   Future<List<Pokemon>> getMyPokemons() async {
     Response result;
     var dio = Dio();
+    //Altere localhost para seu IP
     result = await dio.get('http://localhost:3000/pokemon');
 
   if (result.statusCode == 200) {
@@ -26,7 +27,7 @@ class PokedexRepository implements IPokedexRepository {
   @override
   Future<String> updateIsCatch(String name, bool isCatch) async{
     var dio = Dio();
-    Response response = await dio.patch('http://localhost:3000/pokemon/${name}', data: {'isCatch': isCatch} );
+    Response response = await dio.patch('http://localhost/pokemon/${name}', data: {'isCatch': isCatch} );
      if (response.statusCode == 200) {
       return 'sucesso';
     } else {

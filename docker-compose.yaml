@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+  
+  # api: 
+  #   build: ./backend
+  #   ports:
+  #     - 3000:3000
+  #     - 8080:8080
+  #   depends_on: 
+  #     - mongodb
+  #   command: >
+  #     npm start
+  #   networks:
+  #     - some-net
+  web:
+    build: ./web_pokedex
+    ports:
+      - 80:80
+    depends_on: 
+      - mongodb
+      # - api
+         

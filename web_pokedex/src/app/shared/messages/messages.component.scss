@@ -1,9 +1,12 @@
-:host{
-    .init p {
-        box-align: center;
-        color: #FFFFFF;
-        margin-top: rem-calc(10);
-        border-left: 3px solid #FFFFFF;
-        padding: rem-calc(5);
+:host {
+    .alert {
+        width: 90%;
+        margin: 20px auto;
+        padding: 30px;
+        position: relative;
+        border-radius: 5px;
+        color: black;
+        background-color: white;
     }
+
 }

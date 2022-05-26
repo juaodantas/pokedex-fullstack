@@ -27,7 +27,6 @@ abstract class _PokedexStoreBase with Store {
     try{
       pokemons = await pokedexRepository.getMyPokemons();
     }catch(e){
-      print(e);
       statusPage = Status.error;
     }
     if(pokemons != null){

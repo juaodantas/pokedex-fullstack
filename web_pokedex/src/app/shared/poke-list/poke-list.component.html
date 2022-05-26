@@ -9,17 +9,20 @@
     <ng-template ngFor let-pokemon [ngForOf]="readData">       
         <a class="pokemon">
             <section class="pokemons__status">
-                <button type="submit" (click)="deletePokemon(pokemon.name)">
-                    Retirar da pokedex
-                </button> 
-                <h1>ID: {{pokemon.id}}</h1>
-                <h2>
+               
+                <h2>ID: {{pokemon.id}}</h2>
+                <p>
                     Nome: {{ pokemon.name}}
-                </h2>
+                </p>
             </section>
             <section class="pokemon__image">
                 <img [src]="pokemon.url" [alt]="pokemon.name">
-            </section>          
+            </section>     
+            <section>
+                <button type="submit" (click)="deletePokemon(pokemon.name)">
+                    X
+                </button> 
+            </section>     
         </a>       
     </ng-template>   
 </section>
